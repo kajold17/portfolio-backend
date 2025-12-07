@@ -33,6 +33,11 @@ export default async function handler(req, res){
             },
             body: JSON.stringify(payload)
         });
+        const data = await response.json();
+        const botReply = data?.choices?.[0]?.message?.content;
+
+        return (res.status(200).json({botReply}))
+
     }catch(error){
         console.error("Error fetching response:", error);
         return(res.status(500).json({error: "Internal server error"}))
