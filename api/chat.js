@@ -6,18 +6,20 @@ import resumeData from '../data/resume.js';
 
 dotenv.config();
 
-export default async function handler(req, res){
+export default async function chatHandler(req, res){
     if (req.method !== "POST"){
         return (res.status(405).json({ error: "Only POST allowed" }))
     }
-
+    console.log("📥 Incoming request:");
     const message = req.body.message;
+    console.log("📥 Incoming message:", message);
     if (!message){
         return(res.status(400).json({error: "Message is required"}))
     }
 
+
     const payload = {
-        model: "...",
+        model: "Phi-4-mini-instruct",
         messages: [
           { role: "system", content: `Use this info about Kajol:\n${resumeData}` },
           { role: "user", content: message }
