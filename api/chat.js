@@ -4,9 +4,14 @@ dotenv.config();
 import fetch from 'node-fetch';
 import resumeData from '../data/resume.js';
 
-dotenv.config();
+
 
 export default async function chatHandler(req, res){
+     // ✅ CRITICAL: Set CORS headers FIRST
+     res.setHeader('Access-Control-Allow-Origin', '*');
+     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+     
     if (req.method !== "POST"){
         return (res.status(405).json({ error: "Only POST allowed" }))
     }
