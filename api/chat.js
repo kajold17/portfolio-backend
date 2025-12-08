@@ -29,10 +29,36 @@ export default async function chatHandler(req, res){
 
     const payload = {
         model: "Phi-4-mini-instruct",
+        // model: "OpenAI gpt-5",
         messages: [
-          { role: "system", content: `Use this info about Kajol:\n${resumeData}` },
+          { 
+            role: "system", 
+            content: `You are a helpful portfolio assistant for Kajol Dubey, a Frontend Engineer. Answer questions based ONLY on this resume data:
+
+${resumeData}
+
+Keep responses friendly, concise (under 150 words), and focused on Kajol's experience and skills.`
+          },
+          {
+            role: "user",
+            content: "Who are you?"
+          },
+          {
+            role: "assistant",
+            content: "I'm Kajol's portfolio assistant! I'm here to help you learn about Kajol Dubey, a Frontend Engineer with 4+ years of experience building scalable web and mobile applications. What would you like to know about her?"
+          },
+          {
+            role: "user",
+            content: "Tell me about Kajol"
+          },
+          {
+            role: "assistant",
+            content: "Kajol Dubey is a Frontend Engineer with 4+ years of experience specializing in React, Angular, Next.js, and React Native. She's currently working at Hormone Insight/Auvra building AI-powered health tech apps. She has strong experience in AI-integrated interfaces, design systems, and building 0→1 products. She holds a Master's in Information Science from University at Buffalo."
+          },
           { role: "user", content: message }
-        ]
+        ],
+        temperature: 0.3,
+        max_tokens: 300
     }
 
     try{

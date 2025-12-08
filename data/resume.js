@@ -1,3 +1,6 @@
+
+
+
 const resumeData = `
 Kajol Dubey is a Frontend Engineer with 4+ years of experience building scalable, responsive web and mobile applications using React, Angular, Next.js, and React Native. She specializes in modern frontend architectures, AI-integrated interfaces, design systems, and performant user experiences. Based in the San Francisco Bay Area.
 
@@ -67,5 +70,8 @@ PERSONAL STYLE:
 Kajol enjoys building friendly, animated, personality-driven interfaces that feel alive and intuitive. She blends design and engineering to create emotionally engaging user experiences and loves integrating AI into real products.
 
 `;
+
+console.log("📄 resumeData length:", resumeData.length);
+console.log("📄 resumeData preview:", resumeData.substring(0, 200));
 
 export default resumeData;
